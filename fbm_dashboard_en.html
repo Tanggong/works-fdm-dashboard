@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB M Tool-Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #ccc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2vw;
+            width: 80vw;
+            height: 80vh;
+        }
+
+        .frame {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            color: #333;
+            text-decoration: none;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .frame:hover {
+            transform: scale(1.05);
+        }
+
+        .frame img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        /* Styling 1 */
+        .frame#monitor {
+            flex-direction: column;
+        }
+
+        .frame#monitor img {
+            position: absolute;
+            max-width: 80%;
+        }
+
+        .frame#monitor p {
+            visibility: hidden;
+        }
+
+        .frame#monitor:hover {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url("img/monitor.png");
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.3s ease;
+            justify-content: flex-start;
+            align-items: start;
+            flex-direction: column;
+            padding: 3% 10%;
+        }
+
+        .frame#monitor:hover img {
+            transform: scale(0.8);
+            transform-origin: left;
+            padding-top: 1%;
+            max-height: 3em;
+        }
+
+        .frame#monitor:hover p {
+            visibility: visible;
+            margin-top: 3em;
+            padding-top: 0.5em;
+        }
+
+        .frame#monitor:hover p:last-of-type {
+            margin-top: auto;
+            color: #727272;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        /* Styling 2 */
+        .flip-card {
+            perspective: 1000px;
+        }
+
+        .frame#cdd {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+
+        .flip-card:hover .frame {
+            transform: rotateY(180deg);
+        }
+
+        .frame#cdd .front,
+        .frame#cdd .back {
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        /* Styling for the front face */
+        .frame#cdd .front {
+            background-color: #f8f8f8;
+            color: #333;
+            width: 80%;
+            height: 80%;
+            flex: 1.5 1;
+            gap: 5%;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            font-size: clamp(12px, 1vw, 18px);
+        }
+
+        .frame#cdd .front p:last-of-type {
+            color: #8e8d8d;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        .frame#cdd .back {
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("img/CDD_ui.png") center/cover no-repeat;
+            transform: rotateY(180deg);
+            width: 100%;
+            height: 100%;
+            color: #3D3D3D;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .frame#cdd .back button {
+            padding: 1rem;
+            border-radius: 6px;
+            color: #3D3D3D;
+            background: #fff;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        /* Styling 2 */
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+        }
+
+        .card#goat {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 350ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+            cursor: pointer;
+        }
+
+        .card#goat>div {
+            font-size: clamp(12px, 1vw, 18px);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #333;
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            flex: 1 2;
+            transition: all 350ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+        }
+
+        .card#goat .front {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background-color: #f8f8f8;
+            transform: rotateY(0deg) translateZ(160px);
+            border-radius: 34px 13px 13px 0;
+        }
+
+        .card#goat .right {
+            width: 100%;
+            height: 100%;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            opacity: 0.08;
+            transform: rotateY(90deg) translateZ(160px);
+            border-radius: 0 13px 13px 34px;
+        }
+
+
+        .card#goat:hover {
+            transform: translateZ(-160px) rotateY(-90deg);
+        }
+
+        .card#goat:hover .front {
+            opacity: 0;
+        }
+
+        .card#goat:hover .right {
+            opacity: 1;
+
+        }
+
+        .card#goat p {
+            margin: 5%;
+        }
+
+        .card#goat img {
+            margin: 4%;
+            max-width: 40%;
+        }
+
+
+        ul {
+            margin-left: 21px;
+            padding: 5%;
+        }
+
+
+
+        ul li::marker {
+            color: #2bb381;
+            font-size: 0.8rem;
+        }
+
+        .tags {
+            color: #8e8d8d;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0.33;
+                transform: scale(.89);
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                transform: scale(.67);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="#" id="monitor" class="frame" onclick='window.open("https://monitor.ioer.de/");return false;'>
+            <img src="logos/IÖR-Monitor_Logo_h100px_farbig_transparent.png" alt="Monitor Logo">
+            <p>This expert information system is intended to assist scientists, administrators, practitioners from
+                business and industry as well as the general public to answer questions regarding ground cover and land
+                use for the whole of the Federal Republic of Germany. It provides base data for the analysis of land use
+                development, particularly regarding the issue of sustainability.</p>
+            <p>Land Use, Modeling</p>
+        </a>
+        <!-- <a href="#" class="frame" id="cdd" onclick='window.open("https://colouring.dresden.ioer.de/");return false;'>
+            <div>
+                <p>Laufendes Citizen-Science-Projekt, welches Informationen zu den Gebäuden Dresdens gemeinsam mit der Bevölkerung auf einer offenen Plattform erfasst und in Karten sichtbar und nutzbar macht.</p>
+                <p>Citizen-Science, Baukultur, Resilienz</p>
+
+            </div>
+            <img src="logos/CDD_Logo.png" style="width: 50%;" alt="Colouring Dresden Logo">
+            <button>&#8594 Zum ColoringDresden Webkarte</button>
+        </a> -->
+        <div class="flip-card">
+            <a href="#" class="frame" id="cdd"
+                onclick='window.open("https://colouring.dresden.ioer.de/"); return false;'>
+
+                <!-- Front Face -->
+                <div class="front">
+                    <div>
+                        <p>The citizen science project aims to collect information on Dresden's buildings in an open
+                            digital platform together with the population and thus make it visible and usable in maps.
+                        </p>
+                        <p>Citizen-Science, Building, Resilience</p>
+                    </div>
+                    <img src="logos/CDD_Logo.png" style="width: 50%;" alt="Colouring Dresden Logo">
+                </div>
+
+                <!-- Back Face -->
+                <div class="back">
+                    <button>&#8594 To the Web Application (in German)</button>
+                </div>
+
+            </a>
+        </div>
+        <!-- <a href="#" class="frame" onclick='window.open("https://goat.plan4better.de/");return false;'>
+            <img class="logo" src="logos/logo.png" alt="GOAT Logo">
+        </a> -->
+
+        <div class="wrapper">
+            <a href="#" onclick='window.open("https://goat.plan4better.de/");return false;'>
+
+                <div class="card" id="goat">
+                    <div class="front">
+                        <img class="logo" src="logos/logo.png" alt="GOAT Logo">
+                        <div class="info">
+                            <p>
+                                In the GOAT 3.0 project, a tool was developed in a cooperative collaboration for
+                                balanced spatial and transportation planning
+                            </p>
+                            <p class="tags">
+                                Spatial and transportation planning, Sustainable mobility, Accessibility
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="right">
+                        <ul>
+                            <li>
+                                WebGIS-Platform for sustainable spatial and transportation planning
+                            </li>
+                            <li>
+                                Focusing on spatial analysis, accessibility and scenarios
+                            </li>
+                            <li>
+                                intuitive user interface
+                            </li>
+                            <li>
+                                Cooperative development: SMEs, science, practice
+                            </li>
+                        </ul>
+                        <img src="img/goat3.png" alt="GOAT Logo"></img>
+                    </div>
+                </div>
+
+            </a>
+        </div>
+
+        <a href="#" class="frame" onclick='window.open("https://www.klips-projekt.de/");return false;'>
+            <img src="logos/SAG_KLIPS-Logo_Jan21.png" alt="KLIPS Logo">
+        </a>
+    </div>
+</body>
+
+</html>
