@@ -15,18 +15,18 @@
             transition: all 0.5s ease-in-out;
         }
 
-        #monitor .logo{
+        #monitor .logo {
             position: absolute;
             width: 90%;
             height: 90%;
-            left:1rem;
+            left: 1rem;
             z-index: 1;
             overflow: hidden;
             transition: all 0.5s ease-in-out 0.2s;
         }
 
 
-        #monitor.logo object{
+        #monitor.logo object {
             width: 100%;
             height: 100%;
             -o-object-fit: cover;
@@ -64,15 +64,14 @@
             transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
         }
 
-        #monitor:hover .content{
+        #monitor:hover .content {
             top: 15%;
             bottom: 0;
             padding: 2rem;
-            opacity: 1;
             transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
         }
 
-        #monitor:hover .logo{
+        #monitor:hover .logo {
             width: 40%;
             height: 30%;
             min-width: 180px;
@@ -82,127 +81,183 @@
             transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
         }
 
+        /* Styling CDD */
+
+        #cdd {
+            perspective: 1200px;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+
+        #cdd:hover {
+            transform: rotateY(180deg);
+        }
+
+        #cdd .front,
+        #cdd .back {
+            /* position: absolute; */
+            backface-visibility: hidden;
+            /* top:auto; */
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+
+        /* Styling for the front face */
+        /* #cdd .front {
+            height: 100%;
+            transition: transform 0.3s ease;
+        } */
+
+
+        #cdd .back {
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("img/CDD_ui.png") center/cover no-repeat;
+            transform: rotateY(180deg);
+            width: 100%;
+            height: 100%;
+            color: #3D3D3D;
+            /* flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            text-align: center; */
+        }
+
+        #cdd .back button {
+            padding: 1rem;
+            border-radius: 6px;
+            color: #3D3D3D;
+            background: #fff;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
     </style>
 
 </head>
 
 <body>
     <div class="flex flex-wrap place-content-center bg-gray-300 min-h-screen">
-    <div class="grid grid-cols-1 place-content-center gap-4 md:grid-cols-2 max-w-full min-h-screen">
-        <!-- card monitor -->
-        <div class="p-4 max-w-xl sm:h-[45vh] h-[70vh] bg-100">
-            <a href="https://monitor.ioer.de/" target="_blank" rel="noreferrer noopener">
-                <!-- back side -->
-                <div class="flex rounded-lg h-full bg-zinc-100 sm:p-8 p-1 flex-col" id="monitor" >
-                    <div class="logo flex items-center sm:left-1 left-0.5">
-                        <object data="logos/IÖR-Monitor_Logo_h100px_farbig_transparent.svg"></object>
-                    </div>
-                    <div class=" back-txt">
-                        <div class ="content flex flex-col justify-between flex-grow ">
-                        <p class="leading-normal text-sm text-zinc-700">
-                            This expert information system is intended to assist scientists, administrators,
-                            practitioners from
-                            business and industry as well as the general public to answer questions regarding ground
-                            cover and land
-                            use for the whole of the Federal Republic of Germany. It provides base data for the analysis
-                            of land use
-                            development, particularly regarding the issue of sustainability. </p>
-                        <p class="mt-3 text-zinc-500 text-xs inline-flex items-center">Land Use, Modeling
-                        </p>
+        <div class="grid grid-cols-1 place-content-center gap-4 md:grid-cols-2 max-w-full min-h-screen">
+            <!-- card monitor -->
+            <div class="p-4 max-w-xl sm:h-[45vh] h-[70vh] bg-100">
+                <a href="https://monitor.ioer.de/?language=en" target="_blank" rel="noreferrer noopener">
+                    <div class="flex rounded-lg h-full bg-zinc-100 sm:p-8 p-1 flex-col" id="monitor">
+                        <div class="logo flex items-center sm:left-1 left-0.5">
+                            <object data="logos/IÖR-Monitor_Logo_h100px_farbig_transparent.svg"></object>
+                        </div>
+                        <div class="back-txt">
+                            <div class="content flex flex-col justify-between flex-grow ">
+                                <p class="leading-normal text-sm text-zinc-700">
+                                    This expert information system is intended to assist scientists, administrators,
+                                    practitioners from
+                                    business and industry as well as the general public to answer questions regarding
+                                    ground
+                                    cover and land
+                                    use for the whole of the Federal Republic of Germany. It provides base data for the
+                                    analysis
+                                    of land use
+                                    development, particularly regarding the issue of sustainability. </p>
+                                <p class="mt-3 text-zinc-500 text-xs inline-flex items-center">Land Use, Modeling
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
-        </div>
+            </div>
 
-        <!-- card 2 -->
-        <div class="p-4 max-w-xl">
-            <div class="flex rounded-lg h-full bg-zinc-100 p-8 flex-col">
-                <div class="flex items-center mb-3">
-                    <div
-                        class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
+            <!-- card CDD -->
+            <div class="p-4 max-w-xl sm:h-[45vh] h-[70vh]">
+                <a href="https://colouring.dresden.ioer.de/" target="_blank" rel="noreferrer noopener" id="cdd">
+                    <div class="relative rounded-lg h-full bg-zinc-100 place-content-center">
+                        <div class="flex flex-col md:flex-row gap-4 items-center justify-center absolute inset-0 p-8 front">
+                            <img src="logos/CDD_Logo.png" class="max-w-[60%] md:max-w-[40%]"
+                                alt="Colouring Dresden Logo">
+                            <div class="flex flex-col justify-between flex-grow">
+                                <p class="leading-normal text-sm text-zinc-700">The citizen science project aims to
+                                    collect
+                                    information on Dresden's buildings in an open
+                                    digital platform together with the population and thus make it visible and usable in
+                                    maps.
+                                </p>
+                                <p class="mt-3 text-zinc-500 text-xs inline-flex items-center">Citizen-Science,
+                                    Building,
+                                    Resilience</p>
+                            </div>
+                        </div>
+
+                        <div class="back">
+                            <button>&#8594 To the Web Application (in German)</button>
+                        </div>
+
                     </div>
-                    <h2 class="text-white dark:text-white text-lg font-medium">Feature 2</h2>
-                </div>
-                <div class="flex flex-col justify-between flex-grow">
-                    <p class="leading-relaxed text-base text-white dark:text-gray-300">
-                        Lorem ipsum dolor sit amet. In quos laboriosam non neque eveniet 33 nihil molestias. Rem
-                        perspiciatis iure ut laborum inventore et maxime amet.
-                    </p>
-                    <a href="#"
-                        class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center">Learn More
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
+                </a>
+            </div>
+
+            <!-- card 3 -->
+            <div class="p-4 max-w-xl">
+                <div class="flex rounded-lg h-full dark:bg-gray-800 bg-teal-400 p-8 flex-col">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-white dark:text-white text-lg font-medium">Feature 3</h2>
+                    </div>
+                    <div class="flex flex-col justify-between flex-grow">
+                        <p class="leading-relaxed text-base text-white dark:text-gray-300">
+                            Lorem ipsum dolor sit amet. In quos laboriosam non neque eveniet 33 nihil molestias. Rem
+                            perspiciatis iure ut laborum inventore et maxime amet.
+                        </p>
+                        <a href="#"
+                            class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center">Learn
+                            More
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- card 3 -->
-        <div class="p-4 max-w-xl">
-            <div class="flex rounded-lg h-full dark:bg-gray-800 bg-teal-400 p-8 flex-col">
-                <div class="flex items-center mb-3">
-                    <div
-                        class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
+            <!-- card 3 -->
+            <div class="p-4 max-w-xl">
+                <div class="flex rounded-lg h-full dark:bg-gray-800 bg-teal-400 p-8 flex-col">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-white dark:text-white text-lg font-medium">Feature 3</h2>
                     </div>
-                    <h2 class="text-white dark:text-white text-lg font-medium">Feature 3</h2>
-                </div>
-                <div class="flex flex-col justify-between flex-grow">
-                    <p class="leading-relaxed text-base text-white dark:text-gray-300">
-                        Lorem ipsum dolor sit amet. In quos laboriosam non neque eveniet 33 nihil molestias. Rem
-                        perspiciatis iure ut laborum inventore et maxime amet.
-                    </p>
-                    <a href="#"
-                        class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center">Learn More
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
+                    <div class="flex flex-col justify-between flex-grow">
+                        <p class="leading-relaxed text-base text-white dark:text-gray-300">
+                            Lorem ipsum dolor sit amet. In quos laboriosam non neque eveniet 33 nihil molestias. Rem
+                            perspiciatis iure ut laborum inventore et maxime amet.
+                        </p>
+                        <a href="#"
+                            class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center">Learn
+                            More
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- card 3 -->
-        <div class="p-4 max-w-xl">
-            <div class="flex rounded-lg h-full dark:bg-gray-800 bg-teal-400 p-8 flex-col">
-                <div class="flex items-center mb-3">
-                    <div
-                        class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                    </div>
-                    <h2 class="text-white dark:text-white text-lg font-medium">Feature 3</h2>
-                </div>
-                <div class="flex flex-col justify-between flex-grow">
-                    <p class="leading-relaxed text-base text-white dark:text-gray-300">
-                        Lorem ipsum dolor sit amet. In quos laboriosam non neque eveniet 33 nihil molestias. Rem
-                        perspiciatis iure ut laborum inventore et maxime amet.
-                    </p>
-                    <a href="#"
-                        class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center">Learn More
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
 
-    </div>
+        </div>
 </body>
 
 </html>
