@@ -11,6 +11,7 @@
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
         }
+
         /* Styling Monitor */
         #monitor {
             width: 100%;
@@ -58,24 +59,24 @@
             bottom: 0;
         }
 
-        #monitor:hover {
+        #monitor.hover-active:hover {
             min-height: max-content;
         }
 
-        #monitor:hover .back-txt {
+        #monitor.hover-active:hover .back-txt {
             top: 0%;
             overflow: auto;
             transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
         }
 
-        #monitor:hover .content {
+        #monitor.hover-active:hover .content {
             top: 15%;
             bottom: 0;
             padding: 2rem;
             transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
         }
 
-        #monitor:hover .logo {
+        #monitor.hover-active:hover .logo {
             width: 40%;
             height: 30%;
             min-width: 180px;
@@ -87,13 +88,13 @@
 
         /* Styling CDD */
         #cdd {
-            perspective: 1000px; 
+            perspective: 1000px;
             transform-style: preserve-3d;
             transition: transform 0.6s ease;
         }
 
 
-        #cdd:hover {
+        #cdd.hover-active:hover {
             transform: rotateY(180deg);
         }
 
@@ -120,7 +121,7 @@
         }
 
 
-        #goat:hover {
+        #goat.hover-active:hover {
             transform: translateZ(-160px) rotateY(-90deg);
         }
 
@@ -130,7 +131,7 @@
         }
 
 
-        #goat .front{
+        #goat .front {
             transform: rotateY(0deg) translateZ(160px);
             border-radius: 34px 13px 13px 0;
         }
@@ -142,11 +143,11 @@
             height: 100%;
         }
 
-        #goat:hover .front {
+        #goat.hover-active:hover .front {
             opacity: 0;
         }
 
-        #goat:hover .back {
+        #goat.hover-active:hover .back {
             opacity: 1;
 
         }
@@ -158,20 +159,27 @@
             }
         }
 
-
+        /* styling klips */
+        #klips.hover-active:hover,
+        #klips.clicked {
+            scale: 1.1;
+            transform: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="flex flex-wrap place-content-center bg-stone-300 min-h-screen">
+    <div class="flex flex-wrap place-content-center max-w-full bg-stone-300 min-h-screen">
         <div class="grid grid-cols-1 place-content-center gap-8 md:grid-cols-2 max-w-full min-h-screen">
             <!-- card monitor -->
-            <div class="p-4 max-w-xl sm:h-[40vh] h-[65vh] bg-100">
-                <a href="https://monitor.ioer.de/?language=en" target="_blank" rel="noreferrer noopener">
-                    <div class="flex rounded-lg h-full bg-zinc-100 sm:p-8 p-1 flex-col" id="monitor">
-                        <div class="logo flex items-center justify-center inset-0">
-                            <img src="logos/IÖR-Monitor_Logo_h100px_farbig_transparent.svg" alt="IÖR Monitor Logo">                        </div>
+            <div class="p-4 max-w-full sm:h-[40vh] h-[65vh] bg-100">
+                <div class="flex rounded-lg h-full bg-zinc-100 sm:p-8 p-1 flex-col hover-active" id="monitor">
+                    <div class="logo flex items-center justify-center inset-0">
+                        <img src="logos/IÖR-Monitor_Logo_h100px_farbig_transparent.svg" alt="IÖR Monitor Logo">
+                    </div>
+                    <a href="https://monitor.ioer.de/?language=en" target="_blank" rel="noreferrer noopener">
                         <div class="back-txt">
                             <div class="content flex flex-col justify-between flex-grow ">
                                 <p class="leading-normal text-sm text-zinc-700">
@@ -188,33 +196,32 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                </div>
                 </a>
 
             </div>
 
             <!-- card CDD -->
-            <div class="p-4 max-w-xl sm:h-[40vh] h-[50vh]">
-                <a href="https://colouring.dresden.ioer.de/" target="_blank" rel="noreferrer noopener">
-                    <div class="relative rounded-lg h-full bg-zinc-100 place-content-center" id="cdd">
-                        <div
-                            class="flex flex-col md:flex-row gap-4 items-center justify-center absolute inset-0 p-8 front">
-                            <img src="logos/CDD_Logo.png" class="max-w-[60%] md:max-w-[40%]"
-                                alt="Colouring Dresden Logo">
-                            <div class="flex flex-col justify-between flex-grow">
-                                <p class="leading-normal text-sm text-zinc-700">The citizen science project aims to
-                                    collect
-                                    information on Dresden's buildings in an open
-                                    digital platform together with the population and thus make it visible and usable in
-                                    maps.
-                                </p>
-                                <p class="mt-3 text-zinc-500 text-xs inline-flex items-center">Citizen-Science,
-                                    Building,
-                                    Resilience</p>
-                            </div>
+            <div class="p-4  max-w-full sm:h-[40vh] h-[50vh]">
+                <div class="relative rounded-lg h-full bg-zinc-100 place-content-center hover-active" id="cdd">
+                    <div class="flex flex-col md:flex-row gap-4 items-center justify-center absolute inset-0 p-8 front">
+                        <img src="logos/CDD_Logo.png" class="max-w-[60%] md:max-w-[40%]" alt="Colouring Dresden Logo">
+                        <div class="flex flex-col justify-between flex-grow">
+                            <p class="leading-normal text-sm text-zinc-700">The citizen science project aims to
+                                collect
+                                information on Dresden's buildings in an open
+                                digital platform together with the population and thus make it visible and usable in
+                                maps.
+                            </p>
+                            <p class="mt-3 text-zinc-500 text-xs inline-flex items-center">Citizen-Science,
+                                Building,
+                                Resilience</p>
                         </div>
+                    </div>
 
-                        <div class="back inline-flex items-center justify-center">
+                    <a class="back inline-flex items-center justify-center" href="https://colouring.dresden.ioer.de/"
+                        target="_blank" rel="noreferrer noopener">
+                        <div>
                             <button
                                 class="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow inline-flex gap-2 items-center">
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -223,31 +230,32 @@
                                 </svg>
                                 <span> To the Web Application (in German)</span></button>
                         </div>
+                    </a>
 
-                    </div>
-                </a>
+                </div>
             </div>
 
             <!-- card goat -->
             <div class="p-4 max-w-xl sm:h-[40vh] h-[50vh]">
-                <a href="https://goat.plan4better.de/" target="_blank" rel="noreferrer noopener">
-                    <div class="relative rounded-lg h-full bg-zinc-100 place-content-center" id="goat">
-                        <div
-                            class="flex flex-col md:flex-row gap-4 items-center justify-center absolute inset-0 p-8 front">
-                            <img src="logos/goat_logo.png" class="max-w-[60%] md:max-w-[40%]" alt="GOAT Logo">
-                            <div class="flex flex-col justify-between flex-grow">
-                                <p class="leading-normal text-sm text-zinc-700">In the GOAT 3.0 project, a tool was
-                                    developed in a cooperative collaboration for
-                                    balanced spatial and transportation planning
-                                </p>
-                                <p class="mt-3 text-zinc-500 text-xs inline-flex items-center">
-                                    Spatial and transportation planning, Sustainable mobility, Accessibility</p>
-                            </div>
+                <div class="relative rounded-lg h-full bg-zinc-100 place-content-center hover-active" id="goat">
+                    <div class="flex flex-col md:flex-row gap-4 items-center justify-center absolute inset-0 p-8 front">
+                        <img src="logos/goat_logo.png" class="max-w-[60%] md:max-w-[40%]" alt="GOAT Logo">
+                        <div class="flex flex-col justify-between flex-grow">
+                            <p class="leading-normal text-sm text-zinc-700">In the GOAT 3.0 project, a tool was
+                                developed in a cooperative collaboration for
+                                balanced spatial and transportation planning
+                            </p>
+                            <p class="mt-3 text-zinc-500 text-xs inline-flex items-center">
+                                Spatial and transportation planning, Sustainable mobility, Accessibility</p>
                         </div>
+                    </div>
 
-                        <div class="flex flex-col md:flex-row gap-4 items-center bg-zinc-100 rounded-bl-3xl rounded-r-2xl justify-center absolute inset-0 p-8 back">
+                    <a class="flex bg-zinc-100 rounded-bl-3xl rounded-r-2xl justify-center absolute inset-0 p-8 back"
+                        href="https://goat.plan4better.de/" target="_blank" rel="noreferrer noopener">
+                        <div
+                            class="flex flex-col md:flex-row gap-4 items-center rounded-bl-3xl rounded-r-2xl justify-center absolute inset-0 p-8 ">
                             <ul class="text-sm list-disc">
-                                <li >
+                                <li>
                                     WebGIS-Platform for sustainable spatial and transportation planning
                                 </li>
                                 <li>
@@ -262,15 +270,15 @@
                             </ul>
                             <img src="img/goat3.png" class="max-w-[60%] md:max-w-[50%]" alt="GOAT Logo"></img>
                         </div>
+                    </a>
 
-                    </div>
-                </a>
+                </div>
             </div>
 
-            <!-- card 3 -->
-            <div class="p-4 max-w-xl sm:h-[40vh] bg-100 hover:scale-110 transition-transform">
+            <!-- card 4 -->
+            <div class="p-4 max-w-xl sm:h-[40vh] bg-100 hover-active" id="klips">
                 <a href="https://www.klips-projekt.de/" target="_blank" rel="noreferrer noopener">
-                    <div class="flex rounded-lg h-full bg-zinc-100 sm:p-8 p-1 flex-col " id="klips">
+                    <div class="flex rounded-lg h-full bg-zinc-100 sm:p-8 p-1 flex-col ">
                         <div class="logo flex justify-center">
                             <img src="logos/SAG_KLIPS-Logo_Jan21.png" alt="KLIPS Logo" class="max-w-[80%]">
                         </div>
@@ -285,6 +293,29 @@
             <img src="img/qr-code.svg" alt="QR Code" class="w-24">
         </div>
 
+        <script>
+
+        </script>
 </body>
+
+<script>
+    if ("ontouchstart" in document.documentElement) {
+        // Remove hover-active class and add click-active class on touch devices
+        document.querySelectorAll('.hover-active').forEach(function (element) {
+            element.classList.remove('hover-active');
+            element.classList.add('click-active');
+
+            element.addEventListener('click', function () {
+                // Toggle the click-active class on click
+                if (element.classList.contains('click-active')) {
+                    element.classList.remove('click-active');
+                } else {
+                    element.classList.add('click-active');
+                }
+            });
+        });
+    }
+
+</script>
 
 </html>
