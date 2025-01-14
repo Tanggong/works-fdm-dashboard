@@ -224,8 +224,8 @@
                         </div>
                     </div>
 
-                    <a class="back inline-flex items-center justify-center rounded-lg transition-all" href="https://colouring.dresden.ioer.de/"
-                        target="_blank" rel="noreferrer noopener">
+                    <a class="back inline-flex items-center justify-center rounded-lg transition-all"
+                        href="https://colouring.dresden.ioer.de/" target="_blank" rel="noreferrer noopener">
                         <div>
                             <button
                                 class="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow inline-flex gap-2 items-center">
@@ -290,10 +290,9 @@
                         </div>
                     </div>
                 </a>
-
             </div>
-
         </div>
+
         <div class="fixed bottom-4 right-4 text-center flex items-end space-x-2 collapse md:visible">
             <p class="text-sm mb-2">To check it on your phone</p>
             <img src="img/qr-code.svg" alt="QR Code" class="w-24">
@@ -306,23 +305,23 @@
 
 <script>
     if ("ontouchstart" in document.documentElement) {
-    // Remove hover-active class and add click-active class on touch devices
-    document.querySelectorAll('.hover-active').forEach(function (element) {
-        element.classList.remove('hover-active');
+        // Remove hover-active class and add click-active class on touch devices
+        document.querySelectorAll('.hover-active').forEach(function (element) {
+            element.classList.remove('hover-active');
 
-        element.addEventListener('click', function () {
-            // Toggle the click-active class on click
-            if (element.classList.contains('click-active')) {
-                element.classList.remove('click-active');
-            } else {
-                element.classList.add('click-active');
-                // Set a timeout to remove the click-active class after 10 seconds
-                setTimeout(function () {
+            element.addEventListener('click', function () {
+                // Toggle the click-active class on click
+                if (element.classList.contains('click-active')) {
                     element.classList.remove('click-active');
-                }, 10000); // 10000 milliseconds = 10 seconds
-            }
+                } else {
+                    element.classList.add('click-active');
+                    // Set a timeout to remove the click-active class after 10 seconds
+                    setTimeout(function () {
+                        element.classList.remove('click-active');
+                    }, 10000); // 10000 milliseconds = 10 seconds
+                }
+            });
         });
-    });
     }
 
 </script>
